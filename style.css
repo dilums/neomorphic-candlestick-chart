@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #303439;
+  }
+  #svg {
+    background: #303439;
+    box-shadow: 5px 5px 10px #1f2225, -5px -5px 10px #41464d;
+    border-radius: 10px;
+  }
+  

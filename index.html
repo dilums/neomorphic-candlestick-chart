@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulls & Bears | Neomorphic Candlestick chart</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
+
+    
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="80%" width="80%" id="svg" viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <filter id="bulls" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow in="SourceGraphic" dx="3" dy="3" stdDeviation="2" flood-color="#1c221e" result="dpshw1"></feDropShadow>
+            <feDropShadow in="SourceGraphic" dx="-3" dy="-3" stdDeviation="2" flood-color="#445048" result="dpshw2"></feDropShadow>
+            <feMerge>
+              <feMergeNode in="dpshw1"></feMergeNode>
+              <feMergeNode in="dpshw2"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+          <filter id="bears" x="-50%" y="-50%" width="200%" height="200%">
+            <feComponentTransfer in="SourceAlpha">
+              <feFuncA type="table" tableValues="1 0"></feFuncA>
+            </feComponentTransfer>
+            <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+            <feOffset dx="4" dy="4" result="offsetblur"></feOffset>
+            <feFlood flood-color="#221c1d" result="color"></feFlood>
+            <feComposite in2="offsetblur" operator="in"></feComposite>
+            <feComposite in2="SourceAlpha" operator="in" result="result1"></feComposite>
+            <feComponentTransfer in="SourceAlpha">
+              <feFuncA type="table" tableValues="1 0"></feFuncA>
+            </feComponentTransfer>
+            <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+            <feOffset dx="-4" dy="-4" result="offsetblurb"></feOffset>
+            <feFlood flood-color="#504445" result="colorb"></feFlood>
+            <feComposite in2="offsetblurb" operator="in"></feComposite>
+            <feComposite in2="SourceAlpha" operator="in" result="result2"></feComposite>
+            <feMerge>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+              <feMergeNode in="result2"></feMergeNode>
+              <feMergeNode in="result1"></feMergeNode>
+            </feMerge>
+          </filter>
+          <filter id="bars" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow in="SourceGraphic" dx="3" dy="3" stdDeviation="2" flood-color="#28272e" result="dpshw1"></feDropShadow>
+            <feDropShadow in="SourceGraphic" dx="-3" dy="-3" stdDeviation="2" flood-color="#3a3944" result="dpshw2"></feDropShadow>
+            <feMerge>
+              <feMergeNode in="dpshw1"></feMergeNode>
+              <feMergeNode in="dpshw2"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+    <script src="main.js"></script>
+</body>
+</html>
